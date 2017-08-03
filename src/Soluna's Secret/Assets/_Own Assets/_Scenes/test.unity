@@ -107,7 +107,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 83655939}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e98a55a10a035f4ca07b2a7f7e56138, type: 3}
   m_Name: 
@@ -700,6 +700,24 @@ Prefab:
     - target: {fileID: 4847891971096678, guid: 700bd23b51d24aa48bfdb08b604aa4f6, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20272795892667516, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
+        type: 2}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511723334493586, guid: 700bd23b51d24aa48bfdb08b604aa4f6, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063901913131276, guid: 700bd23b51d24aa48bfdb08b604aa4f6, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114871762844145416, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
+        type: 2}
+      propertyPath: m_UseHeadBob
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 700bd23b51d24aa48bfdb08b604aa4f6, type: 2}

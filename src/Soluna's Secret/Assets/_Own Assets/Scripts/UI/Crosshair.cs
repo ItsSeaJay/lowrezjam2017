@@ -61,15 +61,17 @@ public class Crosshair : MonoBehaviour
         // Set up temporary variables for raycasting
         Vector3 forwardLookVector = firstPersonCharacter.TransformDirection(Vector3.forward);
         RaycastHit crosshairHit;
-        Debug.DrawRay(firstPersonCharacter.position, forwardLookVector, Color.red);
+        LayerMask layerMask = 1 << LayerMask.NameToLayer("Default");
+
+        // Debug.DrawRay(firstPersonCharacter.position, forwardLookVector, Color.red);
 
         // Look for objects ahead of you
-        if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach) &&
+        if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach, layerMask) &&
             crosshairHit.transform.tag == "Lookable")
         {
             currentCrosshairMode = CrosshairMode.Look;
         } // End if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach) && ...
-        else if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach) &&
+        else if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach, layerMask) &&
                  crosshairHit.transform.tag == "Usable")
         {
             currentCrosshairMode = CrosshairMode.Use;
@@ -78,6 +80,8 @@ public class Crosshair : MonoBehaviour
         {
             currentCrosshairMode = CrosshairMode.Default;
         } // End else (Physics.raycast)
+
+        // Debug.Log("RaycastHit: " + crosshairHit.transform.name);
     } // End void Fixed
 
     private void FixSizeDeltaToSpriteRect(Sprite sprite)
