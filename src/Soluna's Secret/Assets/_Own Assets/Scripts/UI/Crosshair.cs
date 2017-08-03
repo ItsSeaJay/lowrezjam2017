@@ -9,19 +9,15 @@ using UnityEngine.UI;
 
 public class Crosshair : MonoBehaviour
 {
-    enum CrosshairMode
+    public enum CrosshairMode
     {
         Default,
         Look,
-        Use
+        Interact
     }; // End enum CrosshairMode
 
     [SerializeField]
-    private Transform firstPersonCharacter;
-    [SerializeField]
     private Sprite defaultSprite, lookSprite, useSprite;
-    [SerializeField]
-    private float reach = 4.0f;
 
     private CrosshairMode currentCrosshairMode;
     private Image crosshairIcon;
@@ -39,6 +35,7 @@ public class Crosshair : MonoBehaviour
 
 	void Update ()
 	{
+        // Change sprite based on the cursor mode
         switch (currentCrosshairMode)
         {
             case CrosshairMode.Default:
@@ -47,7 +44,7 @@ public class Crosshair : MonoBehaviour
             case CrosshairMode.Look:
                 FixSizeDeltaToSpriteRect(lookSprite);
                 break;
-            case CrosshairMode.Use:
+            case CrosshairMode.Interact:
                 FixSizeDeltaToSpriteRect(useSprite);
                 break;
             default:
@@ -56,37 +53,22 @@ public class Crosshair : MonoBehaviour
         } // End switch(currentCrosshairMode)
     } // End void Update ()
 
-    void FixedUpdate()
-    {
-        // Set up temporary variables for raycasting
-        Vector3 forwardLookVector = firstPersonCharacter.TransformDirection(Vector3.forward);
-        RaycastHit crosshairHit;
-        LayerMask layerMask = 1 << LayerMask.NameToLayer("Default");
-
-        // Debug.DrawRay(firstPersonCharacter.position, forwardLookVector, Color.red);
-
-        // Look for objects ahead of you
-        if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach, layerMask) &&
-            crosshairHit.transform.tag == "Lookable")
-        {
-            currentCrosshairMode = CrosshairMode.Look;
-        } // End if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach) && ...
-        else if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out crosshairHit, reach, layerMask) &&
-                 crosshairHit.transform.tag == "Usable")
-        {
-            currentCrosshairMode = CrosshairMode.Use;
-        } // End else if (Physics.raycast)
-        else
-        {
-            currentCrosshairMode = CrosshairMode.Default;
-        } // End else (Physics.raycast)
-
-        // Debug.Log("RaycastHit: " + crosshairHit.transform.name);
-    } // End void Fixed
-
-    private void FixSizeDeltaToSpriteRect(Sprite sprite)
+    public void FixSizeDeltaToSpriteRect(Sprite sprite)
     {
         crosshairIcon.sprite = sprite;
         rectTransform.sizeDelta = new Vector2(sprite.rect.width, sprite.rect.height);
     } // End void FixSizeDeltaToSpriteRect(Sprite sprite)
+
+    // Accessors / Mutators
+    public CrosshairMode CurrentCrosshairMode
+    {
+        get
+        {
+            return currentCrosshairMode;
+        } // End get
+        set
+        {
+            currentCrosshairMode = value;
+        } // End set
+    } // End public CrosshairMode CurrentCrosshairMode
 } // End public class Crosshair
