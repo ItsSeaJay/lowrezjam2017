@@ -32,3 +32,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+src/Soluna's Secret/Temp/
+src/Soluna's Secret/Library/
