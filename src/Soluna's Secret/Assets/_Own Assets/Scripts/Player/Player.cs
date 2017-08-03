@@ -42,40 +42,21 @@ public class Player : MonoBehaviour
         // Look for objects ahead of the player character
         if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out forwardLookHit, reach, layerMask))
         {
-            // If one is found, react based on the collision tag
-            switch (forwardLookHit.transform.tag)
+            if (forwardLookHit.transform.tag == "Lookable")
             {
-                case "Lookable":
-                    crosshair.CurrentCrosshairMode = Crosshair.CrosshairMode.Look;
+                crosshair.CurrentCrosshairMode = Crosshair.CrosshairMode.Look;
 
-                    if (Input.GetButtonDown("Use"))
-                    {
-                       Inscription displayInscription = inscriptions[forwardLookHit.transform.name];
-                       subs.SetTargetMessage(displayInscription.CurrentDisplayedMessage);
-                       displayInscription.AdvanceMessage();
-                    } // End if input.GetButtonDown
-                    break;
-                case "Interactable":
-                    crosshair.CurrentCrosshairMode = Crosshair.CrosshairMode.Interact;
-                    break;
-                default:
-                    // We are not looking at anything important
-                    ResetCursorAndSubtitles();
-                    break;
-            } // End switch (forwardLookHit.transform.tag)
+                if (Input.GetButtonDown("Use"))
+                {
+                    Inscription displayInscription = inscriptions[forwardLookHit.transform.name];
+                    displayInscription.AdvanceMessage();
+                    subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
+                }
+            }
         } // End if (Physics.Raycast(FirstPersonCharacter.position, forwardLookVector, out crosshairHit, reach)
         else
         {
-            // We are still not looking at anything important
-            ResetCursorAndSubtitles();
-        } // End else (Physics.raycast)
+            crosshair.CurrentCrosshairMode = Crosshair.CrosshairMode.Default;
+        }
     } // End void FixedUpdate ()
-
-    // private void 
-
-    private void ResetCursorAndSubtitles()
-    {
-        crosshair.CurrentCrosshairMode = Crosshair.CrosshairMode.Default;
-        subs.SetTargetMessage("");
-    } // End private void ResetCursorAndSubtitles()
 } // End public class Player

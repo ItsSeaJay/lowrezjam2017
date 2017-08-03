@@ -208,8 +208,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayableMessages:
-  - It appears this cube is blue.
-  - Perhaps this is a clue?
+  - Hello Twitter!
+  - I'm making a puzzle game.
+  - This is what I have so far.
+  - What do you think?
 --- !u!1 &413724169
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,10 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayableMessages:
-  - The death of Aziraal
-  - The god of the Orcs
-  - Put an end to the advance of his hordes through antaloor.
-  - Crushed by their defeat, the invaders fled south to mourn their leader.
+  - Aziraal Done Dieded
 --- !u!1 &1269259517 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1063901913131276, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
@@ -555,6 +554,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774582909210230, guid: b0b8868b87588e549be59e23f4ab56e8,
+        type: 2}
+      propertyPath: m_Text
+      value: Subtitles.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0b8868b87588e549be59e23f4ab56e8, type: 2}

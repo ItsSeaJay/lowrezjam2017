@@ -7,45 +7,48 @@ public class Inscription : MonoBehaviour
 {
     [SerializeField]
     private string[] displayableMessages;
-    private string currentDisplayedMessage = "";
-    private int currentDisplayedIndex = 0;
+
+    private string currentlyDisplayedMessage = "";
+    private int currentlyDisplayedIndex = 0;
 
     void Update ()
     {
-        currentDisplayedMessage = displayableMessages[currentDisplayedIndex];
+        currentlyDisplayedMessage = displayableMessages[currentlyDisplayedIndex];
+
+        // Debug.Log("Current Display Index: " + currentlyDisplayedIndex);
     } // End void Update ()
 
     public void ResetMessage ()
     {
-        currentDisplayedIndex = 0;
+        currentlyDisplayedIndex = 0;
     }
 
     public void AdvanceMessage ()
     {
-        if (currentDisplayedIndex + 1 >= displayableMessages.Length)
+        if (currentlyDisplayedIndex + 1 >= displayableMessages.Length)
         {
             ResetMessage();
         }
         else
         {
-            currentDisplayedIndex += 1;
+            currentlyDisplayedIndex += 1;
         }
     }
 
     // Accessors / Mutators
-    public string CurrentDisplayedMessage
+    public string CurrentlyDisplayedMessage
     {
         get
         {
-            return currentDisplayedMessage;
+            return currentlyDisplayedMessage;
         }
     }
 
-    public int CurrentDisplayedIndex
+    public int CurrentlyDisplayedIndex
     {
         get
         {
-            return currentDisplayedIndex;
+            return currentlyDisplayedIndex;
         }
     }
 } // End public class Inscription
