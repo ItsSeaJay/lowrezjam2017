@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Crosshair crosshair;
     [SerializeField]
+    private Lantern lantern;
+    [SerializeField]
     private Subtitles subs; // A little in-joke for me. Should be called 'subtitles'
     [SerializeField]
     private float reach = 4.0f;
@@ -42,6 +44,12 @@ public class Player : MonoBehaviour
                     ReadInscription(crosshair.ForwardLookHit);
                     break;
                 case Crosshair.CrosshairMode.Interact:
+                    // React based on the object type
+                    if (crosshair.ForwardLookHit.transform.name.Contains("Lantern Pickup"))
+                    {
+                        PickUpLantern(crosshair.ForwardLookHit.transform.gameObject);
+                    } // End if (crosshair.ForwardLookHit.transform.name.Contains("Lantern Pickup"))
+
                     //Debug.Log("Clicked on a interactable object.");
                     break;
                 default:
@@ -58,8 +66,13 @@ public class Player : MonoBehaviour
         subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
     } // End private void ReadInscription();
 
-    // Accessors / Mutators
+    private void PickUpLantern(GameObject lanternPickup)
+    {
+        lanternPickup.SetActive(false);
+        lantern.gameObject.SetActive(true);
+    } // End private void PickUpLantern()
 
+    // Accessors / Mutators
     public float Reach
     {
         get

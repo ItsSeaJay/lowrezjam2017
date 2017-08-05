@@ -19,6 +19,7 @@ public class Inscription : MonoBehaviour
         transform.tag = "Lookable";
 
         // Append a blank message at the end
+        // This will let the user know when to stop reading
         displayableMessages.Add("");
     } // End void Start
 
