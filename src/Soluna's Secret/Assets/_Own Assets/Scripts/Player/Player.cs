@@ -31,6 +31,12 @@ public class Player : MonoBehaviour
 
 	void Update ()
 	{
+        HandleUseKey();
+        HandleLantern();
+	} // End void Update ()
+
+    private void HandleUseKey()
+    {
         if (Input.GetButtonDown("Use"))
         {
             switch (crosshair.CurrentCrosshairMode)
@@ -57,7 +63,7 @@ public class Player : MonoBehaviour
                     break;
             } // End switch (crosshair.CurrentCrosshairMode)
         } // End if (Input.GetButtonDown)
-	} // End void Update ()
+    } // End private void handleusekey()
 
     private void ReadInscription(RaycastHit forwardLookHit)
     {
@@ -65,6 +71,28 @@ public class Player : MonoBehaviour
         displayInscription.AdvanceMessage();
         subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
     } // End private void ReadInscription();
+
+    private void HandleLantern()
+    {
+        if (lantern.gameObject.activeInHierarchy)
+        {
+            if (Input.GetButtonDown("Lantern"))
+            {
+                if (lantern.IsLit)
+                {
+                    // The lantern is lit
+                    // Turn it off
+                    lantern.IsLit = false;
+                } // End if (lantern.IsLit)
+                else
+                {
+                    // The lantern is not lit
+                    // Turn it on
+                    lantern.IsLit = true;
+                } // End if (lantern.IsLit)
+            } // End if (Input.GetButtonDown("Lantern"))
+        } // End if (lantern.gameObject.activeInHierarchy)
+    } // End private void HandleLantern()
 
     private void PickUpLantern(GameObject lanternPickup)
     {
