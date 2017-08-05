@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 344828369}
   - component: {fileID: 344828373}
   m_Layer: 0
-  m_Name: Blue Look Cube
+  m_Name: Test Look Cube
   m_TagString: Lookable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,10 +208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayableMessages:
-  - Hello Twitter!
-  - I'm making a puzzle game.
-  - This is what I have so far.
-  - What do you think?
+  - The death of Aziraal
+  - the God of the Orcs
+  - has brought chaos to this land.
 --- !u!1 &413724169
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +387,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1579502448}
   subs: {fileID: 1727230488}
-  firstPersonCharacter: {fileID: 83655940}
   reach: 4
 --- !u!1 &1498160837
 GameObject:
@@ -560,6 +558,16 @@ Prefab:
       propertyPath: m_Text
       value: Subtitles.
       objectReference: {fileID: 0}
+    - target: {fileID: 114850517606115282, guid: b0b8868b87588e549be59e23f4ab56e8,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1269259518}
+    - target: {fileID: 114850517606115282, guid: b0b8868b87588e549be59e23f4ab56e8,
+        type: 2}
+      propertyPath: firstPersonCharacter
+      value: 
+      objectReference: {fileID: 83655940}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0b8868b87588e549be59e23f4ab56e8, type: 2}
   m_IsPrefabParent: 0

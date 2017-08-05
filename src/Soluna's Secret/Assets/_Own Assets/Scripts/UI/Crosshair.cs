@@ -18,9 +18,14 @@ public class Crosshair : MonoBehaviour
 
     [SerializeField]
     private Sprite defaultSprite, lookSprite, useSprite;
+    [SerializeField]
+    private Player player;
+    [SerializeField]
+    private Transform firstPersonCharacter;
 
     private CrosshairMode currentCrosshairMode;
     private Image crosshairIcon;
+    private RaycastHit forwardLookHit;
     private RectTransform rectTransform;
 
     void Start ()
@@ -53,6 +58,42 @@ public class Crosshair : MonoBehaviour
         } // End switch(currentCrosshairMode)
     } // End void Update ()
 
+    void FixedUpdate ()
+    {
+        // Set up temporary variables for raycasting
+        Vector3 forwardLookVector = firstPersonCharacter.TransformDirection(Vector3.forward);
+        LayerMask layerMask = 1 << LayerMask.NameToLayer("Default"); // Collide with default
+
+        // look for objects ahead of the player character
+        if (Physics.Raycast(firstPersonCharacter.position, 
+                            forwardLookVector, 
+                            out forwardLookHit,
+                            player.Reach,
+                            layerMask))
+        {
+            switch(forwardLookHit.transform.tag)
+            {
+                case "Lookable":
+                    // We're looking at an inscription
+                    currentCrosshairMode = CrosshairMode.Look;
+                    break;
+                case "Interactable":
+                    // We're looking at an interactable object
+                    currentCrosshairMode = CrosshairMode.Interact;
+                    break;
+                default:
+                    // We're looking at an object that can't be used
+                    currentCrosshairMode = CrosshairMode.Default;
+                    break;
+            } // End switch(forwardLookHit.transform.tag)
+        } // End if Physics.raycast ...
+        else
+        {
+            // We're looking at nothing or the sky.
+            currentCrosshairMode = CrosshairMode.Default;
+        } // End else Physics.raycast ...
+    } // End void FixedUpdate()
+
     public void FixSizeDeltaToSpriteRect(Sprite sprite)
     {
         crosshairIcon.sprite = sprite;
@@ -71,4 +112,12 @@ public class Crosshair : MonoBehaviour
             currentCrosshairMode = value;
         } // End set
     } // End public CrosshairMode CurrentCrosshairMode
+
+    public RaycastHit ForwardLookHit
+    {
+        get
+        {
+            return forwardLookHit;
+        } // End get
+    } // End public RaycastHit ForwardLookHit
 } // End public class Crosshair

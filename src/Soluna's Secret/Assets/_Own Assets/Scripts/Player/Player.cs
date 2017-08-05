@@ -10,53 +10,65 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Subtitles subs; // A little in-joke for me. Should be called 'subtitles'
     [SerializeField]
-    private Transform firstPersonCharacter;
-    [SerializeField]
     private float reach = 4.0f;
 
     private Dictionary<string, Inscription> inscriptions = new Dictionary<string, Inscription>();
 
     void Start ()
 	{
+        // Iterate over every object in the scene
         object[] obj = FindObjectsOfType(typeof(GameObject));
 
         foreach (object o in obj)
         {
+            // Get all the inscription components at the start
             GameObject gameObject = (GameObject) o;
             inscriptions.Add(gameObject.name, gameObject.GetComponent<Inscription>());
-        }
+        } // End foreach (object o in obj)
 	} // End void Start ()
 
 	void Update ()
 	{
-		
+        if (Input.GetButtonDown("Use"))
+        {
+            switch (crosshair.CurrentCrosshairMode)
+            {
+                case Crosshair.CrosshairMode.Default:
+                    //Debug.Log("Clicked on a default object.");
+                    break;
+                case Crosshair.CrosshairMode.Look:
+                    //Debug.Log("Clicked on a lookable object.");
+
+                    ReadInscription(crosshair.ForwardLookHit);
+                    break;
+                case Crosshair.CrosshairMode.Interact:
+                    //Debug.Log("Clicked on a interactable object.");
+                    break;
+                default:
+                    //Debug.Log("Clicked on something that broke!");
+                    break;
+            } // End switch (crosshair.CurrentCrosshairMode)
+        } // End if (Input.GetButtonDown)
 	} // End void Update ()
 
-    void FixedUpdate()
+    private void ReadInscription(RaycastHit forwardLookHit)
     {
-        // Set up temporary variables for raycasting
-        Vector3 forwardLookVector = firstPersonCharacter.TransformDirection(Vector3.forward);
-        RaycastHit forwardLookHit;
-        LayerMask layerMask = 1 << LayerMask.NameToLayer("Default"); // Collide ray only with default objects
+        Inscription displayInscription = inscriptions[forwardLookHit.transform.name];
+        displayInscription.AdvanceMessage();
+        subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
+    } // End private void ReadInscription();
 
-        // Look for objects ahead of the player character
-        if (Physics.Raycast(firstPersonCharacter.position, forwardLookVector, out forwardLookHit, reach, layerMask))
-        {
-            if (forwardLookHit.transform.tag == "Lookable")
-            {
-                crosshair.CurrentCrosshairMode = Crosshair.CrosshairMode.Look;
+    // Accessors / Mutators
 
-                if (Input.GetButtonDown("Use"))
-                {
-                    Inscription displayInscription = inscriptions[forwardLookHit.transform.name];
-                    displayInscription.AdvanceMessage();
-                    subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
-                }
-            }
-        } // End if (Physics.Raycast(FirstPersonCharacter.position, forwardLookVector, out crosshairHit, reach)
-        else
+    public float Reach
+    {
+        get
         {
-            crosshair.CurrentCrosshairMode = Crosshair.CrosshairMode.Default;
+            return reach;
         }
-    } // End void FixedUpdate ()
+        set
+        {
+            reach = value;
+        }
+    }
 } // End public class Player
