@@ -6,7 +6,8 @@ using UnityEngine;
 public class Inscription : MonoBehaviour
 {
     [SerializeField]
-    private string[] displayableMessages;
+    private List<string> displayableMessages = new List<string>();
+    // private string[] displayableMessages;
 
     private string currentlyDisplayedMessage = "";
     private int currentlyDisplayedIndex = 0;
@@ -16,6 +17,9 @@ public class Inscription : MonoBehaviour
         // Ensure the tag is correct when the game starts
         // Just in case I forget
         transform.tag = "Lookable";
+
+        // Append a blank message at the end
+        displayableMessages.Add("");
     } // End void Start
 
     void Update ()
@@ -32,7 +36,7 @@ public class Inscription : MonoBehaviour
 
     public void AdvanceMessage ()
     {
-        if (currentlyDisplayedIndex + 1 >= displayableMessages.Length)
+        if (currentlyDisplayedIndex + 1 >= displayableMessages.Count)
         {
             ResetMessage();
         } // End if (currentlyDisplayedIndex + 1 >= displayableMessages.Length)
