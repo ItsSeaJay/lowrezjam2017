@@ -14,24 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float reach = 4.0f;
 
-    private Dictionary<string, Inscription> inscriptions   = new Dictionary<string, Inscription>();
-    private Dictionary<string, Interactable> interactables = new Dictionary<string, Interactable>();
-    private Player instance = null;
-
     void Start ()
-	{
-        // Iterate over every object in the scene
-        object[] obj = FindObjectsOfType(typeof(GameObject));
-
-        foreach (object o in obj)
-        {
-            // Get all the inscription & interactable components at the start
-            GameObject go = (GameObject) o;
-
-            inscriptions.Add(go.GetInstanceID().ToString(), gameObject.GetComponent<Inscription>());
-            interactables.Add(go.GetInstanceID().ToString(), gameObject.GetComponent<Interactable>());
-        } // End foreach (object o in obj)
-    } // End void Start ()
+	{ } // End void Start ()
 
 	void Update ()
 	{
@@ -40,14 +24,14 @@ public class Player : MonoBehaviour
 
     private void ReadInscription(RaycastHit raycastHit)
     {
-        Inscription displayInscription = inscriptions[raycastHit.transform.gameObject.GetInstanceID().ToString()];
+        Inscription displayInscription = raycastHit.transform.gameObject.GetComponent<Inscription>();
         displayInscription.AdvanceMessage();
         subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
     } // End private void ReadInscription();
 
     private void Interact(RaycastHit raycastHit)
     {
-        Interactable interactable = interactables[raycastHit.transform.gameObject.GetInstanceID().ToString()];
+        Interactable interactable = raycastHit.transform.gameObject.GetComponent<Interactable>();
         interactable.HandleInteraction();
     } // End void Interact(RaycastHit raycastHit)
 
