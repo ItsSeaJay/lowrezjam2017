@@ -28,9 +28,8 @@ public class Player : MonoBehaviour
             // Get all the inscription & interactable components at the start
             GameObject go = (GameObject) o;
 
-            inscriptions.Add(go.name + go.GetInstanceID(), gameObject.GetComponent<Inscription>());
-
-            interactables.Add(go.name + go.GetInstanceID(), gameObject.GetComponent<Interactable>());
+            inscriptions.Add(go.GetInstanceID().ToString(), gameObject.GetComponent<Inscription>());
+            interactables.Add(go.GetInstanceID().ToString(), gameObject.GetComponent<Interactable>());
         } // End foreach (object o in obj)
     } // End void Start ()
 
@@ -41,14 +40,14 @@ public class Player : MonoBehaviour
 
     private void ReadInscription(RaycastHit raycastHit)
     {
-        Inscription displayInscription = inscriptions[raycastHit.transform.gameObject.name + raycastHit.transform.gameObject.GetInstanceID()];
+        Inscription displayInscription = inscriptions[raycastHit.transform.gameObject.GetInstanceID().ToString()];
         displayInscription.AdvanceMessage();
         subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
     } // End private void ReadInscription();
 
     private void Interact(RaycastHit raycastHit)
     {
-        Interactable interactable = interactables[crosshair.ForwardLookHit.transform.gameObject.name +raycastHit.transform.gameObject.GetInstanceID()];
+        Interactable interactable = interactables[raycastHit.transform.gameObject.GetInstanceID().ToString()];
         interactable.HandleInteraction();
     } // End void Interact(RaycastHit raycastHit)
 
