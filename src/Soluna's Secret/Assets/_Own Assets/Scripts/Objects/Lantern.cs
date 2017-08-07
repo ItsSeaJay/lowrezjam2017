@@ -11,11 +11,29 @@ public class Lantern : MonoBehaviour
 {
     [SerializeField]
     private bool isLit = true;
+    [SerializeField]
+    private SphereCollider haloCollider;
 
     private Animator animator;
     private Light light;
 
-	void Start ()
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+
+        haloCollider.gameObject.SetActive(false);
+
+        if (isLit)
+        {
+            animator.Play("Lit");
+        } // End if (isLit)
+        else
+        {
+            animator.Play("Unlit");
+        } // End else (isLit)
+    } // End void OnEnable
+
+    void Start ()
 	{
         // Get references to attatched components
         animator = GetComponent<Animator>();
@@ -24,9 +42,18 @@ public class Lantern : MonoBehaviour
         tag = "Interactable";
 	} // End void Start ()
 
-	void Update ()
+    void Update ()
 	{
         HandleAnimations();
+
+        if (this.gameObject.activeSelf)
+        {
+            haloCollider.gameObject.SetActive(true);
+        }
+        else
+        {
+            haloCollider.gameObject.SetActive(false);
+        }
     } // End void Update ()
 
     private void HandleAnimations ()
@@ -52,11 +79,6 @@ public class Lantern : MonoBehaviour
             } // End if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Lighting Down") && ...
         } // End else (isLit)
     } // End private void HandleAnimations
-
-    public void Pickup()
-    {
-
-    } // End if 
 
     // Accessors / Mutators
     public bool IsLit

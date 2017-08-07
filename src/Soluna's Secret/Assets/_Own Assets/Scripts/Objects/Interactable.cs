@@ -7,6 +7,7 @@ public class Interactable : MonoBehaviour
 {
     enum Item
     {
+        None,
         Lantern,
         Torch,
         Switch,
@@ -15,7 +16,7 @@ public class Interactable : MonoBehaviour
     }; // End enum InteractionType
 
     [SerializeField]
-    private Item kind;
+    private Item kind = Item.None;
 
     private Player player;
 
@@ -32,6 +33,9 @@ public class Interactable : MonoBehaviour
     {
         switch (kind)
         {
+            case Item.None:
+                // Do nothing
+                break;
             case Item.Lantern:
                 player.Lantern.gameObject.SetActive(true);
                 this.gameObject.SetActive(false);
