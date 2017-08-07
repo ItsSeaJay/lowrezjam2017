@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 95288261769089068}
   - component: {fileID: 65303677170282660}
   - component: {fileID: 114008323586337974}
+  - component: {fileID: 114738287531339118}
   m_Layer: 0
   m_Name: Puzzle Door
   m_TagString: Untagged
@@ -160,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001508600605226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.33, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4623465551489148}
@@ -297,7 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4c261891c9128489ef9315d13d3539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  open: 1
+  open: 0
+  locked: 1
+  inscription: {fileID: 114284775329839518}
 --- !u!114 &114284775329839518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +313,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayableMessages:
-  - Fire Matt!
+  - The door is locked.
+  - Perhaps something nearby
+  - will open it?
+--- !u!114 &114738287531339118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721466732636134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1de8e2fb8768414aa709a1bbe9b84a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kind: 3
 --- !u!137 &137323180366881396
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

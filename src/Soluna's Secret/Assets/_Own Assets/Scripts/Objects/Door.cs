@@ -79,8 +79,8 @@ public class Door : MonoBehaviour
     {
         if (!locked)
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Opening") ||
-                animator.GetCurrentAnimatorStateInfo(0).IsName("Closing"))
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Opening") &&
+                !animator.GetCurrentAnimatorStateInfo(0).IsName("Closing"))
             {
                 // The door can be opened/closed
                 if (open)
@@ -91,7 +91,7 @@ public class Door : MonoBehaviour
                 {
                     Open();
                 } // End else (open)
-            } // End if (animator.GetCurrentAnimatorStateInfo(0).IsName("Opening") || ...
+           } // End if (animator.GetCurrentAnimatorStateInfo(0).IsName("Opening") || ...
         } // End if (!locked)
     } // End public void Pry
 

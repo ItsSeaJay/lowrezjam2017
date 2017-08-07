@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
         {
             // Get all the inscription & interactable components at the start
             GameObject gameObject = (GameObject) o;
-            inscriptions.Add(gameObject.name + "_inscription", gameObject.GetComponent<Inscription>());
-            interactables.Add(gameObject.name + "_interactable", gameObject.GetComponent<Interactable>());
+            inscriptions.Add(gameObject.name, gameObject.GetComponent<Inscription>());
+            interactables.Add(gameObject.name, gameObject.GetComponent<Interactable>());
         } // End foreach (object o in obj)
 	} // End void Start ()
 
