@@ -11,6 +11,10 @@ public class Door : MonoBehaviour
 {
     [SerializeField]
     private bool open = false;
+    [SerializeField]
+    private bool locked = false;
+    [SerializeField]
+    private Inscription inscription;
 
     private Animator animator;
     private BoxCollider boxCollider;
@@ -34,6 +38,7 @@ public class Door : MonoBehaviour
 
 	void Update ()
 	{
+        // Only allow the player to walk through the door if it is open
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
         {
             // Allow the player to pass through the door
@@ -44,6 +49,19 @@ public class Door : MonoBehaviour
             // Stop the player going through the door
             boxCollider.enabled = true;
         } // End else (animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
+
+        // If the door is locked, enable the inscription
+        if (locked)
+        {
+            // Enable the inscription
+            inscription.gameObject.SetActive(true);
+        }
+        else
+        {
+            // The door is unlocked
+            // Disable the inscription
+
+        }
     } // End void Update ()
 
     public void Open()
@@ -57,4 +75,14 @@ public class Door : MonoBehaviour
         open = false;
         animator.Play("Closing");
     } // End public void Open()
+
+    public void Lock()
+    {
+        locked = true;
+    } // End public void Lock()
+
+    public void Unlocked()
+    {
+        locked = true;
+    } // End public void Unlock()
 } // End public class Door

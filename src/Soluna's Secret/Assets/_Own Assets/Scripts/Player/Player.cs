@@ -14,7 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float reach = 4.0f;
 
-    private Dictionary<string, Inscription> inscriptions = new Dictionary<string, Inscription>();
+    private Dictionary<string, Inscription> inscriptions   = new Dictionary<string, Inscription>();
+    private Dictionary<string, Interactable> interactables = new Dictionary<string, Interactable>();
+    private Player instance = null;
 
     void Start ()
 	{
@@ -23,20 +25,34 @@ public class Player : MonoBehaviour
 
         foreach (object o in obj)
         {
-            // Get all the inscription components at the start
+            // Get all the inscription & interactable components at the start
             GameObject gameObject = (GameObject) o;
             inscriptions.Add(gameObject.name, gameObject.GetComponent<Inscription>());
+            interactables.Add(gameObject.name, gameObject.GetComponent<Interactable>());
         } // End foreach (object o in obj)
 	} // End void Start ()
 
 	void Update ()
 	{
-        HandleUseKey();
-        HandleLantern();
+        HandleInput();
 	} // End void Update ()
 
-    private void HandleUseKey()
+    private void ReadInscription(RaycastHit raycastHIt)
     {
+        Inscription displayInscription = inscriptions[raycastHIt.transform.name];
+        displayInscription.AdvanceMessage();
+        subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
+    } // End private void ReadInscription();
+
+    private void Interact(RaycastHit raycastHit)
+    {
+        Interactable interactable = interactables[crosshair.ForwardLookHit.transform.name];
+        interactable.HandleInteraction();
+    } // End void Interact(RaycastHit raycastHit)
+
+    private void HandleInput()
+    {
+        // Use key
         if (Input.GetButtonDown("Use"))
         {
             switch (crosshair.CurrentCrosshairMode)
@@ -50,11 +66,7 @@ public class Player : MonoBehaviour
                     ReadInscription(crosshair.ForwardLookHit);
                     break;
                 case Crosshair.CrosshairMode.Interact:
-                    // React based on the object type
-                    if (crosshair.ForwardLookHit.transform.name.Contains("Lantern Pickup"))
-                    {
-                        PickUpLantern(crosshair.ForwardLookHit.transform.gameObject);
-                    } // End if (crosshair.ForwardLookHit.transform.name.Contains("Lantern Pickup"))
+                    Interact(crosshair.ForwardLookHit);
 
                     //Debug.Log("Clicked on a interactable object.");
                     break;
@@ -63,17 +75,8 @@ public class Player : MonoBehaviour
                     break;
             } // End switch (crosshair.CurrentCrosshairMode)
         } // End if (Input.GetButtonDown)
-    } // End private void handleusekey()
 
-    private void ReadInscription(RaycastHit forwardLookHit)
-    {
-        Inscription displayInscription = inscriptions[forwardLookHit.transform.name];
-        displayInscription.AdvanceMessage();
-        subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
-    } // End private void ReadInscription();
-
-    private void HandleLantern()
-    {
+        // Lantern Toggle
         if (lantern.gameObject.activeInHierarchy)
         {
             if (Input.GetButtonDown("Lantern"))
@@ -94,13 +97,21 @@ public class Player : MonoBehaviour
         } // End if (lantern.gameObject.activeInHierarchy)
     } // End private void HandleLantern()
 
-    private void PickUpLantern(GameObject lanternPickup)
+    public void PickupLantern()
     {
-        lanternPickup.SetActive(false);
         lantern.gameObject.SetActive(true);
-    } // End private void PickUpLantern()
+        crosshair.ForwardLookHit.transform.gameObject.SetActive(false);
+    } // End public void PickupLantern()
 
     // Accessors / Mutators
+    public Lantern Lantern
+    {
+        get
+        {
+            return lantern;
+        }
+    }
+
     public float Reach
     {
         get

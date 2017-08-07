@@ -15,22 +15,18 @@ public class Lantern : MonoBehaviour
     private Animator animator;
     private Light light;
 
-    void Awake ()
-    {
-        Debug.Log("The Lantern has been picked up!");
-    } // End void Awake ()
-
 	void Start ()
 	{
         // Get references to attatched components
         animator = GetComponent<Animator>();
         light = GetComponent<Light>();
+
+        tag = "Interactable";
 	} // End void Start ()
 
 	void Update ()
 	{
         HandleAnimations();
-        Debug.Log("Lantern is " + isLit);
     } // End void Update ()
 
     private void HandleAnimations ()
@@ -56,6 +52,11 @@ public class Lantern : MonoBehaviour
             } // End if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Lighting Down") && ...
         } // End else (isLit)
     } // End private void HandleAnimations
+
+    public void Pickup()
+    {
+
+    } // End if 
 
     // Accessors / Mutators
     public bool IsLit

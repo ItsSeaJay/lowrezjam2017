@@ -288,6 +288,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &631592306 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1431357242121022, guid: c0160d9be8a612c4596fd0ed29671888,
+    type: 2}
+  m_PrefabInternal: {fileID: 1255367471}
+--- !u!114 &631592312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 631592306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1de8e2fb8768414aa709a1bbe9b84a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kind: 0
 --- !u!1 &669842562 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1207821367515970, guid: b0b8868b87588e549be59e23f4ab56e8,
@@ -317,6 +334,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114284775329839518, guid: dab0b90089e04ae48873870d7be7bace,
+        type: 2}
+      propertyPath: displayableMessages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4664994822237882, guid: dab0b90089e04ae48873870d7be7bace, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -348,6 +370,40 @@ Prefab:
     - target: {fileID: 4664994822237882, guid: dab0b90089e04ae48873870d7be7bace, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737966803381880, guid: dab0b90089e04ae48873870d7be7bace, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114008323586337974, guid: dab0b90089e04ae48873870d7be7bace,
+        type: 2}
+      propertyPath: open
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114008323586337974, guid: dab0b90089e04ae48873870d7be7bace,
+        type: 2}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114008323586337974, guid: dab0b90089e04ae48873870d7be7bace,
+        type: 2}
+      propertyPath: inscription
+      value: 
+      objectReference: {fileID: 1050700301}
+    - target: {fileID: 114284775329839518, guid: dab0b90089e04ae48873870d7be7bace,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[0]
+      value: The door is locked.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114284775329839518, guid: dab0b90089e04ae48873870d7be7bace,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[1]
+      value: Perhaps something nearby
+      objectReference: {fileID: 0}
+    - target: {fileID: 114284775329839518, guid: dab0b90089e04ae48873870d7be7bace,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[2]
+      value: will open it?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dab0b90089e04ae48873870d7be7bace, type: 2}
@@ -497,6 +553,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 903467038}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &954876629 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1721466732636134, guid: dab0b90089e04ae48873870d7be7bace,
+    type: 2}
+  m_PrefabInternal: {fileID: 692387630}
+--- !u!114 &954876634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954876629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1de8e2fb8768414aa709a1bbe9b84a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kind: 3
 --- !u!1 &997074283
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +651,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1050700301 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114284775329839518, guid: dab0b90089e04ae48873870d7be7bace,
+    type: 2}
+  m_PrefabInternal: {fileID: 692387630}
+  m_Script: {fileID: 11500000, guid: 35d38e044d454334eb6d516ab9b11e32, type: 3}
 --- !u!1001 &1255367471
 Prefab:
   m_ObjectHideFlags: 0
