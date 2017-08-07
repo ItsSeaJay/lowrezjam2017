@@ -6,12 +6,14 @@ using UnityEngine;
 // Requirement(s)
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(Rigidbody))]
 
 public class Solar : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     private BoxCollider boxCollider;
-    private List<GameObject> lightsList = new List<GameObject>();
+
+    public List<GameObject> lightsList = new List<GameObject>();
 
     void Start()
     {
@@ -30,10 +32,15 @@ public class Solar : MonoBehaviour
             meshRenderer.enabled = false;
         }
 
-        foreach (GameObject go in lightsList)
+        // Cleanup lights list
+        for (int i = 0; i < lightsList.Count; ++i)
         {
-            Debug.Log(go.name);
-        }
+            if (!lightsList[i].activeInHierarchy ||
+                lightsList[i] == null)
+            {
+                lightsList.Remove(lightsList[i]);
+            } // End if (!go.activeInHierarchy || ..
+        } // End foreach(GameObject go in lightsList)
     } // End void Update ()
 
     void OnTriggerEnter(Collider other)
