@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Requirement(s)
+[RequireComponent(typeof(BoxCollider))]
+
 public class Inscription : MonoBehaviour
 {
     [SerializeField]
