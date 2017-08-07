@@ -34,6 +34,16 @@ public class Door : MonoBehaviour
         {
             animator.Play("Closed");
         } // End else (open)
+
+        // The door is interactable only if it is unlocked
+        if (!locked)
+        {
+            tag = "Interactable";
+        } // End if (!locked)
+        else
+        {
+            tag = "Untagged";
+        }
 	} // End void Start ()
 
 	void Update ()
@@ -51,23 +61,47 @@ public class Door : MonoBehaviour
         } // End else (animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
 
         // If the door is locked, enable the inscription
-        if (locked)
+        if (locked &&
+            !open)
         {
-            // Enable the inscription
+            // Show the inscription
             inscription.gameObject.SetActive(true);
-        }
+        } // End if (locked)
         else
         {
             // The door is unlocked
-            // Disable the inscription
-
-        }
+            inscription.gameObject.SetActive(false);
+        } // End else (locked)
     } // End void Update ()
 
-    public void Open()
+    // Unlocked doors can be toggled open / shut
+    public void Pry()
     {
-        open = true;
-        animator.Play("Opening");
+        if (!locked)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Opening") ||
+                animator.GetCurrentAnimatorStateInfo(0).IsName("Closing"))
+            {
+                // The door can be opened/closed
+                if (open)
+                {
+                    Close();
+                } // End if (open)
+                else
+                {
+                    Open();
+                } // End else (open)
+            } // End if (animator.GetCurrentAnimatorStateInfo(0).IsName("Opening") || ...
+        } // End if (!locked)
+    } // End public void Pry
+
+    private void Open()
+    {
+        if (!locked)
+        {
+            open = true;
+            animator.Play("Opening");
+        } // End if (!locked)
     } // End public void Open()
 
     public void Close()
@@ -81,7 +115,7 @@ public class Door : MonoBehaviour
         locked = true;
     } // End public void Lock()
 
-    public void Unlocked()
+    public void Unlock()
     {
         locked = true;
     } // End public void Unlock()

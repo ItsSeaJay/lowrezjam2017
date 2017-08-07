@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
         {
             // Get all the inscription & interactable components at the start
             GameObject gameObject = (GameObject) o;
-            inscriptions.Add(gameObject.name, gameObject.GetComponent<Inscription>());
-            interactables.Add(gameObject.name, gameObject.GetComponent<Interactable>());
+            inscriptions.Add(gameObject.name + "_inscription", gameObject.GetComponent<Inscription>());
+            interactables.Add(gameObject.name + "_interactable", gameObject.GetComponent<Interactable>());
         } // End foreach (object o in obj)
 	} // End void Start ()
 
@@ -37,9 +37,9 @@ public class Player : MonoBehaviour
         HandleInput();
 	} // End void Update ()
 
-    private void ReadInscription(RaycastHit raycastHIt)
+    private void ReadInscription(RaycastHit raycastHit)
     {
-        Inscription displayInscription = inscriptions[raycastHIt.transform.name];
+        Inscription displayInscription = inscriptions[raycastHit.transform.name];
         displayInscription.AdvanceMessage();
         subs.SetTargetMessage(displayInscription.CurrentlyDisplayedMessage);
     } // End private void ReadInscription();
@@ -96,12 +96,6 @@ public class Player : MonoBehaviour
             } // End if (Input.GetButtonDown("Lantern"))
         } // End if (lantern.gameObject.activeInHierarchy)
     } // End private void HandleLantern()
-
-    public void PickupLantern()
-    {
-        lantern.gameObject.SetActive(true);
-        crosshair.ForwardLookHit.transform.gameObject.SetActive(false);
-    } // End public void PickupLantern()
 
     // Accessors / Mutators
     public Lantern Lantern

@@ -24,6 +24,7 @@ public class Interactable : MonoBehaviour
         // Fix transform tag if it hasn't already
         tag = "Interactable";
 
+        // TODO: Find a way to make this not terrible
         player = GameObject.Find("Player").GetComponent<Player>();
     } // End void Start ()
 
@@ -40,6 +41,9 @@ public class Interactable : MonoBehaviour
             case Item.Switch:
                 break;
             case Item.Door:
+                Door door = GetComponent<Door>();
+                // Attempt to move the door
+                door.Pry();
                 break;
             case Item.Pedastal:
                 break;
