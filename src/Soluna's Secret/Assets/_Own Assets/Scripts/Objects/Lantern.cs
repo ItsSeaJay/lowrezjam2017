@@ -46,14 +46,7 @@ public class Lantern : MonoBehaviour
 	{
         HandleAnimations();
 
-        if (this.gameObject.activeSelf)
-        {
-            haloCollider.gameObject.SetActive(true);
-        }
-        else
-        {
-            haloCollider.gameObject.SetActive(false);
-        }
+        haloCollider.gameObject.SetActive(isLit);
     } // End void Update ()
 
     private void HandleAnimations ()

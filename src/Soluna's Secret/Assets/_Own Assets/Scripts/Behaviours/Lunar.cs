@@ -29,10 +29,12 @@ public class Lunar : MonoBehaviour
         if (lightsList.Count > 0)
         {
             meshRenderer.enabled = false;
+            boxCollider.isTrigger = true;
         } // End else (lightsList.Count > 0)
         else
         {
             meshRenderer.enabled = true;
+            boxCollider.isTrigger = false;
         } // End else (lightsList.Count > 0)
 
         CleanupLightsList();

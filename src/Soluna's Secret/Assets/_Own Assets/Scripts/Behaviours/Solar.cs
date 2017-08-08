@@ -29,10 +29,12 @@ public class Solar : MonoBehaviour
         if (lightsList.Count > 0)
         {
             meshRenderer.enabled = true;
+            boxCollider.isTrigger = false;
         }
         else
         {
             meshRenderer.enabled = false;
+            boxCollider.isTrigger = true;
         }
 
         // Cleanup lights list
