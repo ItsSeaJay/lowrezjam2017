@@ -5,7 +5,6 @@ using UnityEngine;
 
 // Requirement(s)
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Light))]
 
 public class Lantern : MonoBehaviour
 {
@@ -39,7 +38,6 @@ public class Lantern : MonoBehaviour
 	{
         // Get references to attatched components
         animator = GetComponent<Animator>();
-        lanternLight = GetComponent<Light>();
 
         tag = "Interactable";
 	} // End void Start ()
@@ -49,6 +47,7 @@ public class Lantern : MonoBehaviour
         HandleAnimations();
 
         haloCollider.gameObject.SetActive(isLit);
+        lanternLight.gameObject.SetActive(isLit);
     } // End void Update ()
 
     private void HandleAnimations ()
