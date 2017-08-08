@@ -17,12 +17,15 @@ public class Solar : MonoBehaviour
 
     void Start()
     {
+        // Get the necessary References
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<BoxCollider>();
     } // End void Start ()
 
     void Update()
     {
+        // This is a 'Solar' object
+        // It is enabled only if it is lit
         if (lightsList.Count > 0)
         {
             meshRenderer.enabled = true;
