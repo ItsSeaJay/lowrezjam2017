@@ -12,6 +12,7 @@ public class Solar : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     private BoxCollider boxCollider;
+    private Rigidbody solarRigidbody;
 
     public List<GameObject> lightsList = new List<GameObject>();
 
@@ -20,6 +21,11 @@ public class Solar : MonoBehaviour
         // Get the necessary References
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<BoxCollider>();
+        solarRigidbody = GetComponent<Rigidbody>();
+
+        // Fix the rigidbody settings
+        solarRigidbody.useGravity = false;
+        solarRigidbody.isKinematic = true;
     } // End void Start ()
 
     void Update()
@@ -37,20 +43,13 @@ public class Solar : MonoBehaviour
             boxCollider.isTrigger = true;
         }
 
-        // Cleanup lights list
-        for (int i = 0; i < lightsList.Count; ++i)
-        {
-            if (!lightsList[i].activeInHierarchy ||
-                lightsList[i] == null)
-            {
-                lightsList.Remove(lightsList[i]);
-            } // End if (!go.activeInHierarchy || ..
-        } // End foreach(GameObject go in lightsList)
+        CleanupLightsList();
     } // End void Update ()
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Light")
+        if (other.tag == "Light" &&
+            !lightsList.Contains(other.gameObject))
         {
             lightsList.Add(other.gameObject);
         }
@@ -63,4 +62,20 @@ public class Solar : MonoBehaviour
             lightsList.Remove(other.gameObject);
         }
     } // End void OnTriggerExit
+
+    private void CleanupLightsList()
+    {
+        // Check for stray lights
+        for (int i = 0; i < lightsList.Count; ++i)
+        {
+            // If a light in the list is no longer available
+            if (!lightsList[i].activeInHierarchy ||
+                lightsList[i] == null ||
+                !lightsList[i].GetComponent<SphereCollider>().enabled)
+            {
+                // Remove that item from the list
+                lightsList.Remove(lightsList[i]);
+            } // End if (!go.activeInHierarchy || ..
+        } // End foreach(GameObject go in lightsList)
+    } // End private void CleanupLightsList()
 } // End public class Solar

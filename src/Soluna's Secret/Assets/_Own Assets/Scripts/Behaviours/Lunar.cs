@@ -12,6 +12,7 @@ public class Lunar : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     private BoxCollider boxCollider;
+    private Rigidbody lunarRigidbody;
 
     public List<GameObject> lightsList = new List<GameObject>();
 
@@ -20,6 +21,12 @@ public class Lunar : MonoBehaviour
         // Get the necessary references 
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<BoxCollider>();
+
+        lunarRigidbody = GetComponent<Rigidbody>();
+
+        // Fix the rigidbody settings
+        lunarRigidbody.useGravity = false;
+        lunarRigidbody.isKinematic = true;
     } // End void Start ()
 
     void Update()
@@ -42,7 +49,8 @@ public class Lunar : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Light")
+        if (other.tag == "Light" &&
+            !lightsList.Contains(other.gameObject))
         {
             lightsList.Add(other.gameObject);
         } // End if (other.tag == "Light")
@@ -63,7 +71,8 @@ public class Lunar : MonoBehaviour
         {
             // If a light in the list is no longer available
             if (!lightsList[i].activeInHierarchy ||
-                lightsList[i] == null)
+                lightsList[i] == null ||
+                !lightsList[i].GetComponent<SphereCollider>().enabled)
             {
                 // Remove that item from the list
                 lightsList.Remove(lightsList[i]);

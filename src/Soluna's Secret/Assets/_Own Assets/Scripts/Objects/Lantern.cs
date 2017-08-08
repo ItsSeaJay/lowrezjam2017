@@ -5,7 +5,6 @@ using UnityEngine;
 
 // Requirement(s)
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Light))]
 
 public class Lantern : MonoBehaviour
 {
@@ -13,15 +12,17 @@ public class Lantern : MonoBehaviour
     private bool isLit = true;
     [SerializeField]
     private SphereCollider haloCollider;
+    [SerializeField]
+    private Light lanternLight;
 
     private Animator animator;
-    private Light light;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
 
-        haloCollider.gameObject.SetActive(false);
+        haloCollider.enabled = isLit;
+        lanternLight.enabled = isLit;
 
         if (isLit)
         {
@@ -37,7 +38,6 @@ public class Lantern : MonoBehaviour
 	{
         // Get references to attatched components
         animator = GetComponent<Animator>();
-        light = GetComponent<Light>();
 
         tag = "Interactable";
 	} // End void Start ()
@@ -46,7 +46,8 @@ public class Lantern : MonoBehaviour
 	{
         HandleAnimations();
 
-        haloCollider.gameObject.SetActive(isLit);
+        haloCollider.enabled = isLit;
+        lanternLight.enabled = isLit;
     } // End void Update ()
 
     private void HandleAnimations ()

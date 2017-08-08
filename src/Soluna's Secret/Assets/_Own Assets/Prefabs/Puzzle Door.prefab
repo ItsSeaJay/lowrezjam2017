@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114738287531339118}
   m_Layer: 0
   m_Name: Puzzle Door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1de8e2fb8768414aa709a1bbe9b84a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: 3
+  kind: 4
 --- !u!137 &137323180366881396
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
