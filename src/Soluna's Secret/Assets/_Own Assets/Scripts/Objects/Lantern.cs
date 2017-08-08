@@ -13,15 +13,17 @@ public class Lantern : MonoBehaviour
     private bool isLit = true;
     [SerializeField]
     private SphereCollider haloCollider;
+    [SerializeField]
+    private Light lanternLight;
 
     private Animator animator;
-    private Light light;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
 
         haloCollider.gameObject.SetActive(false);
+        lanternLight.gameObject.SetActive(false);
 
         if (isLit)
         {
@@ -37,7 +39,7 @@ public class Lantern : MonoBehaviour
 	{
         // Get references to attatched components
         animator = GetComponent<Animator>();
-        light = GetComponent<Light>();
+        lanternLight = GetComponent<Light>();
 
         tag = "Interactable";
 	} // End void Start ()
