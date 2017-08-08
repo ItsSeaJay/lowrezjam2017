@@ -493,11 +493,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &288129488 stripped
-SphereCollider:
-  m_PrefabParentObject: {fileID: 135997924407231758, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1947826565}
 --- !u!1 &344828368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1328,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 108624719695580752, guid: c0160d9be8a612c4596fd0ed29671888,
         type: 2}
       propertyPath: m_Type
@@ -1399,8 +1395,35 @@ Prefab:
         type: 2}
       propertyPath: m_BounceIntensity
       value: 0
+=======
+    - target: {fileID: 135614364627357446, guid: c0160d9be8a612c4596fd0ed29671888,
+        type: 2}
+      propertyPath: m_Radius
+      value: 24
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 108025229234223296, guid: c0160d9be8a612c4596fd0ed29671888,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 4
+>>>>>>> 21974dcc264840883f73fbc97f15930f5f4deb48
+      objectReference: {fileID: 0}
+    - target: {fileID: 108025229234223296, guid: c0160d9be8a612c4596fd0ed29671888,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 108025229234223296, guid: c0160d9be8a612c4596fd0ed29671888,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.9411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 108025229234223296, guid: c0160d9be8a612c4596fd0ed29671888,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.12456748
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 108663796024705584, guid: c0160d9be8a612c4596fd0ed29671888, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c0160d9be8a612c4596fd0ed29671888, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1407275287
@@ -2207,33 +2230,30 @@ Prefab:
       propertyPath: subs
       value: 
       objectReference: {fileID: 1727230488}
-    - target: {fileID: 108575699532145626, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
+    - target: {fileID: 108449873800560446, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
         type: 2}
-      propertyPath: m_Shadows.m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 108575699532145626, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
-        type: 2}
-      propertyPath: m_Range
+      propertyPath: m_Intensity
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114601094888516668, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
+    - target: {fileID: 108449873800560446, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
         type: 2}
-      propertyPath: haloCollider
-      value: 
-      objectReference: {fileID: 288129488}
-    - target: {fileID: 1262413595022950, guid: 700bd23b51d24aa48bfdb08b604aa4f6, type: 2}
-      propertyPath: m_Name
-      value: Halo Collider
+      propertyPath: m_Color.r
+      value: 0.875
       objectReference: {fileID: 0}
-    - target: {fileID: 1262413595022950, guid: 700bd23b51d24aa48bfdb08b604aa4f6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 108449873800560446, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 108449873800560446, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.10294117
       objectReference: {fileID: 0}
     - target: {fileID: 135997924407231758, guid: 700bd23b51d24aa48bfdb08b604aa4f6,
         type: 2}
       propertyPath: m_Radius
-      value: 32
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 700bd23b51d24aa48bfdb08b604aa4f6, type: 2}
