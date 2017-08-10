@@ -43,7 +43,7 @@ public class Door : MonoBehaviour
         else
         {
             tag = "Untagged";
-        }
+        } // End else
 	} // End void Start ()
 
 	void Update ()
@@ -52,26 +52,29 @@ public class Door : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
         {
             // Allow the player to pass through the door
-            boxCollider.enabled = false;
+            boxCollider.isTrigger = true;
         } // End if (animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
         else
         {
             // Stop the player going through the door
-            boxCollider.enabled = true;
+            boxCollider.isTrigger = false;
         } // End else (animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
 
-        // If the door is locked, enable the inscription
-        if (locked &&
-            !open)
+        if (inscription != null)
         {
-            // Show the inscription
-            inscription.gameObject.SetActive(true);
-        } // End if (locked)
-        else
-        {
-            // The door is unlocked
-            inscription.gameObject.SetActive(false);
-        } // End else (locked)
+            // If the door is locked, enable the inscription
+            if (locked &&
+                !open)
+            {
+                // Show the inscription
+                inscription.gameObject.SetActive(true);
+            } // End if (locked)
+            else
+            {
+                // The door is unlocked
+                inscription.gameObject.SetActive(false);
+            } // End else (locked)
+        }
     } // End void Update ()
 
     // Unlocked doors can be toggled open / shut
