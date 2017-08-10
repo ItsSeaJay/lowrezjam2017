@@ -14,7 +14,7 @@ public class Lunar : MonoBehaviour
     private BoxCollider boxCollider;
     private Rigidbody lunarRigidbody;
 
-    public List<GameObject> lightsList = new List<GameObject>();
+    private List<GameObject> lightsList = new List<GameObject>();
 
     void Start()
     {

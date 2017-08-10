@@ -14,7 +14,7 @@ public class Solar : MonoBehaviour
     private BoxCollider boxCollider;
     private Rigidbody solarRigidbody;
 
-    public List<GameObject> lightsList = new List<GameObject>();
+    private List<GameObject> lightsList = new List<GameObject>();
 
     void Start()
     {
