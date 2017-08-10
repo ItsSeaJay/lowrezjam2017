@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 108663796024705584}
   - component: {fileID: 114303439080136984}
   m_Layer: 0
-  m_Name: Lantern Pickup
+  m_Name: Lantern Pickup (Legacy)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
