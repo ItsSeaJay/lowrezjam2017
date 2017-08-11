@@ -25,22 +25,25 @@ public class FlickeringLight : MonoBehaviour
 
 	void Update ()
 	{
-        switch (lightToFlicker.type)
+        if (lightToFlicker.enabled)
         {
-            case LightType.Spot:
-                lightToFlicker.spotAngle += Random.Range(-rangeDifference, rangeDifference) * Time.deltaTime * flickerRate;
-                lightToFlicker.spotAngle = Mathf.Clamp(lightToFlicker.spotAngle, minRange, maxRange);
-                break;
-            case LightType.Directional:
-                break;
-            case LightType.Point:
-                lightToFlicker.range += Random.Range(-rangeDifference, rangeDifference) * Time.deltaTime * flickerRate;
-                lightToFlicker.range = Mathf.Clamp(lightToFlicker.range, minRange, maxRange);
-                break;
-            case LightType.Area:
-                break;
-            default:
-                break;
+            switch (lightToFlicker.type)
+            {
+                case LightType.Spot:
+                    lightToFlicker.spotAngle += Random.Range(-rangeDifference, rangeDifference) * Time.deltaTime * flickerRate;
+                    lightToFlicker.spotAngle = Mathf.Clamp(lightToFlicker.spotAngle, minRange, maxRange);
+                    break;
+                case LightType.Directional:
+                    break;
+                case LightType.Point:
+                    lightToFlicker.range += Random.Range(-rangeDifference, rangeDifference) * Time.deltaTime * flickerRate;
+                    lightToFlicker.range = Mathf.Clamp(lightToFlicker.range, minRange, maxRange);
+                    break;
+                case LightType.Area:
+                    break;
+                default:
+                    break;
+            }
         }
     } // End void Update ()
 } // End public class FlickeringLight

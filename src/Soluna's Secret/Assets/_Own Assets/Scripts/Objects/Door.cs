@@ -6,6 +6,7 @@ using UnityEngine;
 // Requirement(s)
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(AudioSource))]
 
 public class Door : MonoBehaviour
 {
@@ -14,15 +15,19 @@ public class Door : MonoBehaviour
     [SerializeField]
     private bool locked = false;
     [SerializeField]
+    private AudioClip openClip, closeClip;
+    [SerializeField]
     private Inscription inscription;
 
     private Animator animator;
+    private AudioSource audioSource;
     private BoxCollider boxCollider;
 
 	void Start ()
 	{
         // Get references to commponents
         animator    = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider>();
 
         // Set the door to be open/closed
@@ -104,6 +109,11 @@ public class Door : MonoBehaviour
         {
             open = true;
             animator.Play("Opening");
+            audioSource.clip = openClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         } // End if (!locked)
     } // End public void Open()
 
@@ -111,6 +121,11 @@ public class Door : MonoBehaviour
     {
         open = false;
         animator.Play("Closing");
+        audioSource.clip = closeClip;
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
     } // End public void Open()
 
     public void Lock()

@@ -19,7 +19,7 @@ public class Inscription : MonoBehaviour
     {
         // Ensure the tag is correct when the game starts
         // Just in case I forget
-        transform.tag = "Lookable";
+        tag = "Lookable";
 
         // Append a blank message at the end
         // This will let the user know when to stop reading
