@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114774582909210230}
   - component: {fileID: 114340485996573726}
   - component: {fileID: 114143360424957900}
+  - component: {fileID: 95529631695964198}
   m_Layer: 5
   m_Name: Subtitles
   m_TagString: Untagged
@@ -66,6 +67,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95529631695964198
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1207821367515970}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d96ed11f1170e9848ac68b719253f3e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114107111346196958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRate: 16
+  crosshair: {fileID: 114850517606115282}
 --- !u!114 &114153665946350812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -188,7 +207,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This is some text.
+  m_Text: Subtitles.
 --- !u!114 &114850517606115282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,6 +222,8 @@ MonoBehaviour:
   defaultSprite: {fileID: 21300000, guid: de949d7ef0173aa4fb95020316a19660, type: 3}
   lookSprite: {fileID: 21300000, guid: a618005da9b2f454dad1c70c2f61243f, type: 3}
   useSprite: {fileID: 21300000, guid: ad44e568a942ef343b306db635522cf9, type: 3}
+  player: {fileID: 0}
+  firstPersonCharacter: {fileID: 0}
 --- !u!222 &222751758908117122
 CanvasRenderer:
   m_ObjectHideFlags: 1
