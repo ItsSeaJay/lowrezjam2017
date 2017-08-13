@@ -2025,6 +2025,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114167089353121510, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: displayableMessages.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4617666014131358, guid: 615a03d319bc2b849b56e6c76efd8926, type: 2}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -2056,6 +2061,65 @@ Prefab:
     - target: {fileID: 4617666014131358, guid: 615a03d319bc2b849b56e6c76efd8926, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358847959120206, guid: 615a03d319bc2b849b56e6c76efd8926, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.079
+      objectReference: {fileID: 0}
+    - target: {fileID: 65412851555690196, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.18179011
+      objectReference: {fileID: 0}
+    - target: {fileID: 65412851555690196, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.40910494
+      objectReference: {fileID: 0}
+    - target: {fileID: 65412851555690196, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 0.5281448
+      objectReference: {fileID: 0}
+    - target: {fileID: 65412851555690196, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0.23592782
+      objectReference: {fileID: 0}
+    - target: {fileID: 65412851555690196, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: m_Center.x
+      value: 0.0000000037252903
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167089353121510, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[0]
+      value: Something's written here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167089353121510, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[1]
+      value: 'Translated, it says:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167089353121510, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[2]
+      value: '"Come pilgrim,'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167089353121510, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[3]
+      value: '"take this lantern,'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167089353121510, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[4]
+      value: '"Your guide to Soluna."'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167089353121510, guid: 615a03d319bc2b849b56e6c76efd8926,
+        type: 2}
+      propertyPath: displayableMessages.Array.data[5]
+      value: '"May it guide you'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 615a03d319bc2b849b56e6c76efd8926, type: 2}
