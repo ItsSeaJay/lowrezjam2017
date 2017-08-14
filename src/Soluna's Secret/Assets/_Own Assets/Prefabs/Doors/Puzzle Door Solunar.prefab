@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834439316698068}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -3.7618797, y: 1.504, z: 6.649568}
+  m_LocalRotation: {x: -0.49999976, y: 0.5000003, z: 0.50000024, w: 0.49999973}
+  m_LocalPosition: {x: -9.180359, y: 8.2647705, z: -3.708517}
   m_LocalScale: {x: 1.5, y: 0.19999999, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 90.00001}
 --- !u!23 &23995751560913202
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -184,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 1834439316698068}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 215983edafb75894999a3e74f9c2dc0f, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b728166051fd88b4692603cc45bcbdb8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -208,3 +208,7 @@ MonoBehaviour:
   openClip: {fileID: 8300000, guid: 5565c55c19359cf42b660e0a12700dec, type: 3}
   closeClip: {fileID: 8300000, guid: 1b2375ff9a6c2754c97b169fce1164f4, type: 3}
   inscription: {fileID: 0}
+  keyObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
