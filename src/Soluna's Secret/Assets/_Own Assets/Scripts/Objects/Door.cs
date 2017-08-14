@@ -10,14 +10,16 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField]
-    private bool open = false;
-    [SerializeField]
-    private bool locked = false;
+    //[SerializeField]
+    public bool open = false;
+    //[SerializeField]
+    public bool locked = false;
     [SerializeField]
     private AudioClip openClip, closeClip;
     [SerializeField]
     private Inscription inscription;
+    [SerializeField]
+    private GameObject[] keyObjects;
 
     private Animator animator;
     private AudioSource audioSource;
@@ -39,16 +41,6 @@ public class Door : MonoBehaviour
         {
             animator.Play("Closed");
         } // End else (open)
-
-        // The door is interactable only if it is unlocked
-        if (!locked)
-        {
-            tag = "Interactable";
-        } // End if (!locked)
-        else
-        {
-            tag = "Untagged";
-        } // End else
 	} // End void Start ()
 
 	void Update ()
@@ -80,6 +72,39 @@ public class Door : MonoBehaviour
                 inscription.gameObject.SetActive(false);
             } // End else (locked)
         }
+
+        // The door is interactable only if it is unlocked
+        if (!locked)
+        {
+            tag = "Interactable";
+        } // End if (!locked)
+        else
+        {
+            tag = "Untagged";
+        } // End else (!locked)
+
+        // Open if enough keys are active
+        if (keyObjects.Length > 0)
+        {
+            int numberOfActiveKeys = 0;
+
+            for (int i = 0; i < keyObjects.Length; i++)
+            {
+                if (keyObjects[i].GetComponent<MeshRenderer>().enabled)
+                {
+                    numberOfActiveKeys++;
+                }
+            }
+
+            if (numberOfActiveKeys == keyObjects.Length)
+            {
+                Unlock();
+            }
+            else
+            {
+                Lock();
+            }
+        } // End if (keyObjects.Length > 0)
     } // End void Update ()
 
     // Unlocked doors can be toggled open / shut
@@ -135,6 +160,6 @@ public class Door : MonoBehaviour
 
     public void Unlock()
     {
-        locked = true;
+        locked = false;
     } // End public void Unlock()
 } // End public class Door

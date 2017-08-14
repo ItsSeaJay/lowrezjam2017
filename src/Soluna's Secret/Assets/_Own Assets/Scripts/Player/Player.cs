@@ -13,6 +13,13 @@ public class Player : MonoBehaviour
     private Subtitles subs; // A little in-joke for me. Should be called 'subtitles'
     [SerializeField]
     private float reach = 4.0f;
+    [SerializeField]
+    private float disableDistance = 1.0f;
+
+    private List<GameObject> solarList = new List<GameObject>();
+    private List<GameObject> lunarList = new List<GameObject>();
+    private bool collidingWithSolarObject = false;
+    private bool collidingWithLunarObject = false;
 
     void Start ()
 	{ } // End void Start ()
@@ -20,7 +27,41 @@ public class Player : MonoBehaviour
 	void Update ()
 	{
         HandleInput();
+        CleanupSolarList();
+        CheckSolarDistance();
+        CleanupLunarList();
+        CheckLunarDistance();
 	} // End void Update ()
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Solar" &&
+            !solarList.Contains(other.gameObject))
+        {
+            solarList.Add(other.gameObject);
+        }
+
+        if (other.tag == "Lunar" &&
+            !lunarList.Contains(other.gameObject))
+        {
+            lunarList.Add(other.gameObject);
+        }
+    } // End OnTriggerEnter(Collider other)
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Solar" &&
+            !solarList.Contains(other.gameObject))
+        {
+            solarList.Remove(other.gameObject);
+        }
+
+        if (other.tag == "Lunar" &&
+            !lunarList.Contains(other.gameObject))
+        {
+            lunarList.Remove(other.gameObject);
+        }
+    } // End OnTriggerEnter(Collider other)
 
     private void ReadInscription(RaycastHit raycastHit)
     {
@@ -64,7 +105,9 @@ public class Player : MonoBehaviour
         // Lantern Toggle
         if (lantern.gameObject.activeInHierarchy)
         {
-            if (Input.GetButtonDown("Lantern"))
+            if (Input.GetButtonDown("Lantern") &&
+                !collidingWithSolarObject &&
+                !collidingWithLunarObject)
             {
                 if (lantern.IsLit)
                 {
@@ -81,6 +124,70 @@ public class Player : MonoBehaviour
             } // End if (Input.GetButtonDown("Lantern"))
         } // End if (lantern.gameObject.activeInHierarchy)
     } // End private void HandleLantern()
+
+    private void CleanupSolarList()
+    {
+        // Check for solar objects
+        for (int i = 0; i < solarList.Count; ++i)
+        {
+            // If a light in the list is no longer available
+            if (!solarList[i].activeInHierarchy ||
+                 solarList[i] == null)
+            {
+                // Remove that item from the list
+                solarList.Remove(solarList[i]);
+            } // End if (!go.activeInHierarchy || ..
+        } // End foreach(GameObject go in lightsList)
+    } // End private void CleanupSolarList()
+
+    private void CheckSolarDistance()
+    {
+        // Iterate through the solar list
+        for (int i = 0; i < solarList.Count; ++i)
+        {
+            // If the player gets too close to that object
+            if (Vector3.Distance(transform.position, solarList[i].transform.position) < disableDistance)
+            {
+                collidingWithSolarObject = true;
+            }
+            else
+            {
+                collidingWithSolarObject = false;
+            }
+        }
+    }
+
+    private void CleanupLunarList()
+    {
+        // Check for solar objects
+        for (int i = 0; i < lunarList.Count; ++i)
+        {
+            // If a light in the list is no longer available
+            if (!lunarList[i].activeInHierarchy ||
+                 lunarList[i] == null)
+            {
+                // Remove that item from the list
+                solarList.Remove(solarList[i]);
+            } // End if (!go.activeInHierarchy || ..
+        } // End foreach(GameObject go in lightsList)
+    } // End private void CleanupLunarList()
+
+    private void CheckLunarDistance()
+    {
+        // Iterate through the solar list
+        for (int i = 0; i < lunarList.Count; ++i)
+        {
+            // If the player gets too close to that object
+            if (Vector3.Distance(transform.position, lunarList[i].transform.position) < disableDistance)
+            {
+                collidingWithLunarObject = true;
+            }
+            else
+            {
+                collidingWithLunarObject = false;
+            }
+        }
+    }
 
     // Accessors / Mutators
     public Lantern Lantern

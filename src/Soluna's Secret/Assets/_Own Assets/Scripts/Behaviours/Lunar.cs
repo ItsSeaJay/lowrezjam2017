@@ -27,6 +27,9 @@ public class Lunar : MonoBehaviour
         // Fix the rigidbody settings
         lunarRigidbody.useGravity = false;
         lunarRigidbody.isKinematic = true;
+
+        // Fix tag
+        tag = "Lunar";
     } // End void Start ()
 
     void Update()

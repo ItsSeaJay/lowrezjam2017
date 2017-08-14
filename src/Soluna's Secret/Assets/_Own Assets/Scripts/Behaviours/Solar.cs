@@ -26,6 +26,9 @@ public class Solar : MonoBehaviour
         // Fix the rigidbody settings
         solarRigidbody.useGravity = false;
         solarRigidbody.isKinematic = true;
+
+        // Fix tag
+        tag = "Solar";
     } // End void Start ()
 
     void Update()
