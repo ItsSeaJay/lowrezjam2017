@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //TODO: Fix this nonsense
+        if (other.tag == "Finish")
+        {
+            SceneManager.LoadScene("Credits");
+        }
+
         if (other.tag == "Solar" &&
             !solarList.Contains(other.gameObject))
         {
