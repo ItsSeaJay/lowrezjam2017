@@ -50,6 +50,13 @@ public class Interactable : MonoBehaviour
                 door.Pry();
                 break;
             case Item.Pedastal:
+                Pedastal pedastal = GetComponent<Pedastal>();
+                
+                if (!pedastal.Full &&
+                    player.Lantern.gameObject.activeInHierarchy)
+                {
+                    pedastal.ReceiveLantern();
+                }
                 break;
             default:
                 Debug.LogError(name + 

@@ -75,6 +75,22 @@ public class Lantern : MonoBehaviour
     } // End private void HandleAnimations
 
     // Accessors / Mutators
+    public SphereCollider HaloCollider
+    {
+        get
+        {
+            return haloCollider;
+        }
+    }
+
+    public Light LanternLight
+    {
+        get
+        {
+            return lanternLight;
+        }
+    }
+
     public bool IsLit
     {
         get
