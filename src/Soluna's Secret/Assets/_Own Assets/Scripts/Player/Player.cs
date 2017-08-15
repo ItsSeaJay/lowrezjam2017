@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Crosshair crosshair;
     [SerializeField]
+    private GameObject noLanternSign;
+    [SerializeField]
     private Lantern lantern;
     [SerializeField]
     private Subtitles subs; // A little in-joke for me. Should be called 'subtitles'
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
 
 	void Update ()
 	{
+        noLanternSign.SetActive(collidingWithSolarObject || collidingWithLunarObject);
+
         HandleInput();
         CleanupSolarList();
         CheckSolarDistance();
