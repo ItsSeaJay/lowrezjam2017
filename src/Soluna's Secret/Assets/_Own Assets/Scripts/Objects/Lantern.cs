@@ -5,9 +5,12 @@ using UnityEngine;
 
 // Requirement(s)
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 
 public class Lantern : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip igniteClip, extinguishClip;
     [SerializeField]
     private bool isLit = true;
     [SerializeField]

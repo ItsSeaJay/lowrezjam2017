@@ -15,7 +15,7 @@ public class Door : MonoBehaviour
     //[SerializeField]
     public bool locked = false;
     [SerializeField]
-    private AudioClip openClip, closeClip;
+    private AudioClip openClip, closeClip, unlockClip, lockClip;
     [SerializeField]
     private Inscription inscription;
     [SerializeField]
@@ -98,11 +98,17 @@ public class Door : MonoBehaviour
 
             if (numberOfActiveKeys == keyObjects.Length)
             {
-                Unlock();
+                if (locked)
+                {
+                    Unlock();
+                }
             }
             else
             {
-                Lock();
+                if (!locked)
+                {
+                    Lock();
+                }
             }
         } // End if (keyObjects.Length > 0)
     } // End void Update ()
@@ -156,10 +162,26 @@ public class Door : MonoBehaviour
     public void Lock()
     {
         locked = true;
+        if (lockClip != null)
+        {
+            audioSource.clip = lockClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
     } // End public void Lock()
 
     public void Unlock()
     {
         locked = false;
+        if (unlockClip != null)
+        {
+            audioSource.clip = unlockClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
     } // End public void Unlock()
 } // End public class Door

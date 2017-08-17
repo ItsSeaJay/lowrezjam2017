@@ -4,8 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip extinguishClip;
     [SerializeField]
     private Crosshair crosshair;
     [SerializeField]
@@ -19,13 +23,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float disableDistance = 1.0f;
 
+    private AudioSource audioSource;
     private List<GameObject> solarList = new List<GameObject>();
     private List<GameObject> lunarList = new List<GameObject>();
     private bool collidingWithSolarObject = false;
     private bool collidingWithLunarObject = false;
 
     void Start ()
-	{ } // End void Start ()
+	{
+        audioSource = GetComponent<AudioSource>();
+    } // End void Start ()
 
 	void Update ()
 	{
@@ -125,6 +132,12 @@ public class Player : MonoBehaviour
                     // The lantern is lit
                     // Turn it off
                     lantern.IsLit = false;
+
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.clip = extinguishClip;
+                        audioSource.Play();
+                    }
                 } // End if (lantern.IsLit)
                 else
                 {
