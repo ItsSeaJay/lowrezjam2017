@@ -1,0 +1,32 @@
+Initialize engine version: 5.5.2f1 (3829d7f588f3)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 960 (ID=0x1401)
+    Vendor:   NVIDIA
+    VRAM:     2016 MB
+    Driver:   22.21.13.8205
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.023 seconds
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\MEGA - Local Folder\MAIN\Projects\Games\Unity\Soluna's Secret\Repository\src\Soluna's Secret\Builds\v1\Soluna's Secret_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1713 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 3840x1713 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 1.091213 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 22dc -> priority: 1 
